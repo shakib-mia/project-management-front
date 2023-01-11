@@ -16,13 +16,15 @@ function App() {
   const [codeLink, setCodeLink] = useState("");
   const [backendLink, setBackendLink] = useState("");
   const [data, setData] = useState([]);
-  const [updatedSuccessfully, setUpdatedSuccessfully] = useState(false)
+  const [updatedSuccessfully, setUpdatedSuccessfully] = useState(false);
+  const [waiting, setWaiting] = useState(false);
+  const [deleteWaiting, setDeleteWaiting] = useState(false);
 
   const handleFormSubmit = e => {
     e.preventDefault();
 
     // console.log(description.split(/\r?\n|\r|\n/g));
-
+    setWaiting(true)
     axios.post("http://localhost:5000/projects", {
       title,
       smallDesc,
@@ -32,6 +34,7 @@ function App() {
       email: "smdshakibmia2001@gmail.com"
     }).then(res => {
       setUpdatedSuccessfully(res.data.status === 200)
+      setWaiting(res.data.status !== 200)
       setTitle("");
       setSmallDesc("");
       setLiveSite("");
@@ -76,6 +79,7 @@ function App() {
 
       <div className="flex px-5 gap-5">
         <Form
+          waiting={waiting}
           handleFormSubmit={handleFormSubmit}
           title={title}
           setTitle={setTitle}

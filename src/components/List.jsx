@@ -5,7 +5,9 @@ import ListItems from './ListItems';
 
 const List = ({ data, setUpdatedSuccessfully, updatedSuccessfully }) => {
     const deleteItem = id => {
-        axios.delete(`http://localhost:5000/projects/${id}`).then(res => setUpdatedSuccessfully(!updatedSuccessfully))
+        axios.delete(`http://localhost:5000/projects/${id}`).then(res => {
+            setUpdatedSuccessfully(!updatedSuccessfully)
+        })
     }
 
 
