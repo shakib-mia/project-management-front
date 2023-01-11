@@ -13,12 +13,11 @@ function App() {
   const [title, setTitle] = useState("");
   const [smallDesc, setSmallDesc] = useState("");
   const [liveSite, setLiveSite] = useState("");
-  const [codeLink, setCodeLink] = useState("");
+  const [frontCode, setFrontCode] = useState("");
   const [backendLink, setBackendLink] = useState("");
   const [data, setData] = useState([]);
   const [updatedSuccessfully, setUpdatedSuccessfully] = useState(false);
   const [waiting, setWaiting] = useState(false);
-  const [deleteWaiting, setDeleteWaiting] = useState(false);
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -28,9 +27,14 @@ function App() {
     axios.post("http://localhost:5000/projects", {
       title,
       smallDesc,
-      liveSite,
-      codeLink,
+      liveSite: liveSite.includes("https://")? liveSite: "https://" + liveSite,
+      frontCode: frontCode.includes("https://") ? frontCode :  "https://" + frontCode,
       backendLink,
+      hasBackendLink: showBackendInput,
+      primaryImage,
+      details: description,
+      secondaryImage,
+      tertiaryImage,
       email: "smdshakibmia2001@gmail.com"
     }).then(res => {
       setUpdatedSuccessfully(res.data.status === 200)
@@ -38,7 +42,7 @@ function App() {
       setTitle("");
       setSmallDesc("");
       setLiveSite("");
-      setCodeLink("");
+      setFrontCode("");
       setBackendLink("");
       setDescription("");
     })
@@ -87,8 +91,8 @@ function App() {
           setSmallDesc={setSmallDesc}
           liveSite={liveSite}
           setLiveSite={setLiveSite}
-          codeLink={codeLink}
-          setCodeLink={setCodeLink}
+          frontCode={frontCode}
+          setFrontCode={setFrontCode}
           description={description}
           setDescription={setDescription}
           primaryImage={primaryImage}
