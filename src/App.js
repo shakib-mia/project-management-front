@@ -1,23 +1,50 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import InputField from './components/InputField';
-import TextArea from './components/TextArea';
 import axios from "axios"
+import Form from './components/Form';
+import List from './components/List';
 
 function App() {
-  const [name, setName] = useState("");
   const [showBackendInput, setShowBackendInput] = useState(false);
   const [primaryImage, setPrimaryImage] = useState("")
   const [secondaryImage, setSecondaryImage] = useState("")
   const [tertiaryImage, setTertiaryImage] = useState("")
   const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("");
+  const [smallDesc, setSmallDesc] = useState("");
+  const [liveSite, setLiveSite] = useState("");
+  const [codeLink, setCodeLink] = useState("");
+  const [backendLink, setBackendLink] = useState("");
+  const [data, setData] = useState([]);
+  const [updatedSuccessfully, setUpdatedSuccessfully] = useState(false)
 
   const handleFormSubmit = e => {
     e.preventDefault();
 
-    console.log(description.split(/\r?\n|\r|\n/g));
-    setName("")
+    // console.log(description.split(/\r?\n|\r|\n/g));
+
+    axios.post("http://localhost:5000/projects", {
+      title,
+      smallDesc,
+      liveSite,
+      codeLink,
+      backendLink,
+      email: "smdshakibmia2001@gmail.com"
+    }).then(res => {
+      setUpdatedSuccessfully(res.data.status === 200)
+      setTitle("")
+      setSmallDesc("")
+      setLiveSite("")
+      setCodeLink("")
+      setBackendLink("")
+    })
   }
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/projects').then(res => {
+      setData(res.data)
+    })
+  }, [updatedSuccessfully])
 
 
   const handlePrimaryUpload = e => {
@@ -43,64 +70,34 @@ function App() {
   }
 
   return (
-    <div className='bg-slate-600 h-screen w-screen'>
-      <h1 className='text-5xl text-white text-center pt-10'>Project Management Website</h1>
+    <div className='h-screen w-screen'>
+      <h1 className='text-5xl text-center pt-10'>Project Management Website</h1>
 
-      <form onSubmit={handleFormSubmit} className='w-2/3 mx-auto rounded-xl mt-5 bg-slate-400 p-5'>
-        <div className='grid grid-cols-2 gap-4'>
-          <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' label="Title" id="title" placeholder="Title" />
-          <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' label="Small Description" id="smallDesc" placeholder='Put a Small Description Here' />
-          <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' label="Live Site" id="liveSite" placeholder='Put a Link for Live Site' />
-          <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' label="Code Link" id="codeLink" placeholder='Github Link' />
-        </div>
-        <div className='my-2'>
-          <TextArea className="w-full rounded-md py-2 px-1 mt-2" onChange={e => setDescription(e.target.value)} labelStyle='text-xl ml-1' label="Description" id="desc" placeholder='Features Description' />
-        </div>
-
-        <div className="grid grid-cols-3">
-          <div className='my-2'>
-            <h1 className='text-xl'>Primary Image:</h1>
-            <div className="w-fit" style={{ background: primaryImage && "url(" + primaryImage + ')', backgroundSize: '100%' }}>
-              <InputField className="w-[100px] rounded-md py-2 px-1 mt-2 h-[50px]" onchange={handlePrimaryUpload} type="file" id='primaryimg' />
-            </div>
-          </div>
-          <div className='my-2'>
-            <h1 className='text-xl'>Other Image:</h1>
-            <div className="w-fit" style={{ background: secondaryImage && "url(" + secondaryImage + ')', backgroundSize: '100%' }}>
-              <InputField className="w-[100px] rounded-md py-2 px-1 mt-2 h-[50px]" onchange={handleSecondaryUpload} type="file" id='primaryimg' />
-            </div>
-          </div>
-          <div className='my-2'>
-            <h1 className='text-xl'>Other Image:</h1>
-            <div className="w-fit" style={{ background: tertiaryImage && "url(" + tertiaryImage + ')', backgroundSize: '100%' }}>
-              <InputField className="w-[100px] rounded-md py-2 px-1 mt-2 h-[50px]" onchange={handleTertiaryUpload} type="file" id='primaryimg' />
-            </div>
-          </div>
-        </div>
-
-        <div className='text-right'>
-          <InputField
-            label="Have a Backend Link"
-            type="checkbox"
-            className="ml-3"
-            id="check"
-            onchange={e => setShowBackendInput(e.target.checked)}
-          />
-        </div>
-
-        {showBackendInput && <InputField
-          className="w-full rounded-md py-2 px-1 mt-2"
-          label='Backend Link'
-          labelStyle='cursor-pointer'
-          placeholder="Enter Backend Codes link"
-        />}
-
-        <InputField
-          type='submit'
-          value='Add'
-          className='cursor-pointer bg-white px-2 py-1 rounded mt-3'
+      <div className="flex px-5 gap-5">
+        <Form
+          handleFormSubmit={handleFormSubmit}
+          setTitle={setTitle}
+          setSmallDesc={setSmallDesc}
+          setLiveSite={setLiveSite}
+          setCodeLink={setCodeLink}
+          setDescription={setDescription}
+          primaryImage={primaryImage}
+          handlePrimaryUpload={handlePrimaryUpload}
+          secondaryImage={secondaryImage}
+          handleSecondaryUpload={handleSecondaryUpload}
+          tertiaryImage={tertiaryImage}
+          handleTertiaryUpload={handleTertiaryUpload}
+          showBackendInput={showBackendInput}
+          setShowBackendInput={setShowBackendInput}
+          setBackendLink={setBackendLink}
         />
-      </form>
+
+        <List
+          data={data}
+          setUpdatedSuccessfully={setUpdatedSuccessfully}
+          updatedSuccessfully={updatedSuccessfully}
+        />
+      </div>
     </div>
   );
 }
