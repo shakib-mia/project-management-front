@@ -2,17 +2,17 @@ import React from 'react';
 import InputField from './InputField';
 import TextArea from './TextArea';
 
-const Form = ({ handleFormSubmit, setTitle, setSmallDesc, setLiveSite, setCodeLink, setDescription, primaryImage, handlePrimaryUpload, secondaryImage, handleSecondaryUpload, tertiaryImage, handleTertiaryUpload, showBackendInput, setShowBackendInput, setBackendLink }) => {
+const Form = ({ handleFormSubmit,title, setTitle, smallDesc, setSmallDesc, liveSite, setLiveSite, codeLink, setCodeLink, description, setDescription, primaryImage, handlePrimaryUpload, secondaryImage, handleSecondaryUpload, tertiaryImage, handleTertiaryUpload, showBackendInput, setShowBackendInput, backendLink, setBackendLink }) => {
   return (
     <form onSubmit={handleFormSubmit} className='w-2/3 mx-auto rounded-xl mt-5 bg-slate-400 p-5'>
       <div className='grid grid-cols-2 gap-4'>
-        <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setTitle(e.target.value)} label="Title" id="title" placeholder="Title" />
-        <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setSmallDesc(e.target.value)} label="Small Description" id="smallDesc" placeholder='Put a Small Description Here' />
-        <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setLiveSite(e.target.value)} label="Live Site" id="liveSite" placeholder='Put a Link for Live Site' />
-        <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setCodeLink(e.target.value)} label="Code Link" id="codeLink" placeholder='Github Link' />
+        <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setTitle(e.target.value)} label="Title" value={title} id="title" placeholder="Title" />
+        <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setSmallDesc(e.target.value)} label="Small Description" value={smallDesc} id="smallDesc" placeholder='Put a Small Description Here' />
+        <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setLiveSite(e.target.value)} label="Live Site" value={liveSite} id="liveSite" placeholder='Put a Link for Live Site' />
+        <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setCodeLink(e.target.value)} label="Code Link" value={codeLink} id="codeLink" placeholder='Github Link' />
       </div>
       <div className='my-2'>
-        <TextArea className="w-full rounded-md py-2 px-1 mt-2" onChange={e => setDescription(e.target.value)} labelStyle='text-xl ml-1' label="Description" id="desc" placeholder='Features Description' />
+        <TextArea className="w-full rounded-md py-2 px-1 mt-2" onChange={e => setDescription(e.target.value)} labelStyle='text-xl ml-1' label="Description" id="desc" value={description} placeholder='Features Description' />
       </div>
 
       <div className="grid grid-cols-3">
@@ -51,6 +51,7 @@ const Form = ({ handleFormSubmit, setTitle, setSmallDesc, setLiveSite, setCodeLi
         label='Backend Link'
         labelStyle='cursor-pointer'
         placeholder="Enter Backend Codes link"
+        value={backendLink}
         onchange={e => setBackendLink(e.target.value)}
       />}
 

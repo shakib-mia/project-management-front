@@ -32,11 +32,12 @@ function App() {
       email: "smdshakibmia2001@gmail.com"
     }).then(res => {
       setUpdatedSuccessfully(res.data.status === 200)
-      setTitle("")
-      setSmallDesc("")
-      setLiveSite("")
-      setCodeLink("")
-      setBackendLink("")
+      setTitle("");
+      setSmallDesc("");
+      setLiveSite("");
+      setCodeLink("");
+      setBackendLink("");
+      setDescription("");
     })
   }
 
@@ -76,10 +77,15 @@ function App() {
       <div className="flex px-5 gap-5">
         <Form
           handleFormSubmit={handleFormSubmit}
+          title={title}
           setTitle={setTitle}
+          smallDesc={smallDesc}
           setSmallDesc={setSmallDesc}
+          liveSite={liveSite}
           setLiveSite={setLiveSite}
+          codeLink={codeLink}
           setCodeLink={setCodeLink}
+          description={description}
           setDescription={setDescription}
           primaryImage={primaryImage}
           handlePrimaryUpload={handlePrimaryUpload}
@@ -89,6 +95,7 @@ function App() {
           handleTertiaryUpload={handleTertiaryUpload}
           showBackendInput={showBackendInput}
           setShowBackendInput={setShowBackendInput}
+          backendLink={backendLink}
           setBackendLink={setBackendLink}
         />
 
