@@ -3,6 +3,7 @@ import './App.css';
 import axios from "axios"
 import Form from './components/Form';
 import List from './components/List';
+import Details from './components/Details';
 
 function App() {
   const [showBackendInput, setShowBackendInput] = useState(false);
@@ -117,6 +118,8 @@ function App() {
           updatedSuccessfully={updatedSuccessfully}
         />
       </div>
+
+      <Details />
     </div>
   );
 }
