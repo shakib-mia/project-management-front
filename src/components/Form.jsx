@@ -2,7 +2,8 @@ import React from 'react';
 import InputField from './InputField';
 import TextArea from './TextArea';
 
-const Form = ({ handleFormSubmit,title, setTitle, smallDesc, setSmallDesc, liveSite, setLiveSite, frontCode, setFrontCode, description, setDescription, primaryImage, handlePrimaryUpload, secondaryImage, handleSecondaryUpload, tertiaryImage, handleTertiaryUpload, showBackendInput, setShowBackendInput, backendLink, setBackendLink }) => {
+const Form = ({ data }) => {
+  const { handleFormSubmit, title, setTitle, smallDesc, setSmallDesc, liveSite, setLiveSite, frontCode, setFrontCode, description, setDescription, primaryImage, handlePrimaryUpload, secondaryImage, handleSecondaryUpload, tertiaryImage, handleTertiaryUpload, showBackendInput, setShowBackendInput, backendLink, setBackendLink } = data;
   return (
     <form onSubmit={handleFormSubmit} className='w-2/3 mx-auto rounded-xl mt-5 bg-slate-400 p-5'>
       <div className='grid grid-cols-2 gap-4'>

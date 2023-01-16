@@ -1,0 +1,46 @@
+[
+    {
+        "title": "App Developers",
+        "primaryImage": "https://i.ibb.co/PwpGT62/project4.png",
+        "secondaryImage": "https://i.ibb.co/4PMG44P/page3.png",
+        "tertiaryImage": "https://i.ibb.co/wB5mdkw/page1.png",
+        "smallDesc": "Front end only Scroll Trigger Animation website",
+        "liveSite": "https://scroll-trigger-shakib.netlify.app/",
+        "frontCode": "https://github.com/shakib-mia/scroll-trigger-assignment",
+        "backendCode": "",
+        "details": "1. This is A Front End Only Website<br>  2. It is a responsive website.<br>3. It has Animation with GSAP or GreenSock Animation Plugin. <br>"
+    },
+    {
+        "title": "Samad's Edu Care",
+        "primaryImage": "https://i.ibb.co/Z6dqpb0/project1.png",
+        "secondaryImage": "https://i.ibb.co/VqWwq6P/home.png",
+        "tertiaryImage": "https://i.ibb.co/Qbs9Q3L/blogs.png",
+        "smallDesc": "Independent Service Provider",
+        "liveSite": "https://dainty-puppy-ebf938.netlify.app/",
+        "frontCode": "https://github.com/shakib-mia/independent-service-provider",
+        "backendCode": "",
+        "details": "1. This is a React based Single Page Application <br> 2. It has react-router for why the website loads fast. <br>3. It has simple firebase Authentication. <br> 4. In this website You can sign in with custom email, gmail and github. <br> 5. It is a responsive website."
+    },
+    {
+        "title": "Manufacturer Website",
+        "primaryImage": "https://i.ibb.co/L81dp3x/project3.png",
+        "secondaryImage": "https://i.ibb.co/DGCxfG2/homepage.png",
+        "tertiaryImage": "https://i.ibb.co/bQkqcx1/profilepage.png",
+        "smallDesc": "Tools Manufacturer Website",
+        "liveSite": "https://manufacturer-website-545d2.web.app/",
+        "frontCode": "https://github.com/shakib-mia/manufacturer-website-client",
+        "backendCode": "",
+        "details": "1. This is a React based Single Page Application <br> 2. It has react-router for why the website loads fast. <br>3. It has simple firebase Authentication. <br>4. In this website You can sign in with custom email, gmail and github. <br>5. It is a responsive website."
+    },
+    {
+        "title": "Luxurious Car",
+        "primaryImage": "https://i.ibb.co/tX7wVTs/project2.png",
+        "secondaryImage": "https://i.ibb.co/CV65GSh/items.png",
+        "tertiaryImage": "https://i.ibb.co/JvBd8Kz/home.png",
+        "smallDesc": "Car Manufacturer Website",
+        "liveSite": "https://luxurious-cars-9cc9c.web.app/",
+        "frontCode": "https://github.com/shakib-mia/warehouse-management-client",
+        "backendCode": "",
+        "details": "1. This is A Dynamic Website.<br>  2. It is a responsive website.<br>3. It has login facilities like Google, Github and custom email.<br> 4. If You want you can contribute in our website. <br>5. You Can see Reviews and also Post Your thoughts here."
+    }
+]

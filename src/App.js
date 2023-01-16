@@ -27,8 +27,8 @@ function App() {
     axios.post("http://localhost:5000/projects", {
       title,
       smallDesc,
-      liveSite: liveSite.includes("https://")? liveSite: "https://" + liveSite,
-      frontCode: frontCode.includes("https://") ? frontCode :  "https://" + frontCode,
+      liveSite: liveSite.includes("https://") ? liveSite : "https://" + liveSite,
+      frontCode: frontCode.includes("https://") ? frontCode : "https://" + frontCode,
       backendLink,
       hasBackendLink: showBackendInput,
       primaryImage,
@@ -77,34 +77,38 @@ function App() {
     axios.post(url, imgForm).then(res => setSecondaryImage(res.data.data.display_url))
   }
 
+  const detailedData = {
+    waiting,
+    handleFormSubmit,
+    title,
+    setTitle,
+    smallDesc,
+    setSmallDesc,
+    liveSite,
+    setLiveSite,
+    frontCode,
+    setFrontCode,
+    description,
+    setDescription,
+    primaryImage,
+    handlePrimaryUpload,
+    secondaryImage,
+    handleSecondaryUpload,
+    tertiaryImage,
+    handleTertiaryUpload,
+    showBackendInput,
+    setShowBackendInput,
+    backendLink,
+    setBackendLink
+  }
+
   return (
     <div className='h-screen w-screen'>
       <h1 className='text-5xl text-center pt-10'>Project Management Website</h1>
 
       <div className="flex px-5 gap-5">
         <Form
-          waiting={waiting}
-          handleFormSubmit={handleFormSubmit}
-          title={title}
-          setTitle={setTitle}
-          smallDesc={smallDesc}
-          setSmallDesc={setSmallDesc}
-          liveSite={liveSite}
-          setLiveSite={setLiveSite}
-          frontCode={frontCode}
-          setFrontCode={setFrontCode}
-          description={description}
-          setDescription={setDescription}
-          primaryImage={primaryImage}
-          handlePrimaryUpload={handlePrimaryUpload}
-          secondaryImage={secondaryImage}
-          handleSecondaryUpload={handleSecondaryUpload}
-          tertiaryImage={tertiaryImage}
-          handleTertiaryUpload={handleTertiaryUpload}
-          showBackendInput={showBackendInput}
-          setShowBackendInput={setShowBackendInput}
-          backendLink={backendLink}
-          setBackendLink={setBackendLink}
+          data={detailedData}
         />
 
         <List
