@@ -5,7 +5,7 @@ import TextArea from './TextArea';
 const Form = ({ data }) => {
   const { handleFormSubmit, title, setTitle, smallDesc, setSmallDesc, liveSite, setLiveSite, frontCode, setFrontCode, description, setDescription, primaryImage, handlePrimaryUpload, secondaryImage, handleSecondaryUpload, tertiaryImage, handleTertiaryUpload, showBackendInput, setShowBackendInput, backendLink, setBackendLink } = data;
   return (
-    <form onSubmit={handleFormSubmit} className='w-2/3 mx-auto rounded-xl mt-5 bg-slate-400 p-5'>
+    <form onSubmit={handleFormSubmit} className='w-2/3 mx-auto rounded-xl mt-5 bg-darkGray p-5'>
       <div className='grid grid-cols-2 gap-4'>
         <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setTitle(e.target.value)} label="Title" value={title} id="title" placeholder="Title" />
         <InputField className="w-full rounded-md p-2 mt-2" labelStyle='text-xl ml-1' onchange={e => setSmallDesc(e.target.value)} label="Small Description" value={smallDesc} id="smallDesc" placeholder='Put a Small Description Here' />

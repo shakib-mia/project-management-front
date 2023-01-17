@@ -19,6 +19,8 @@ function App() {
   const [data, setData] = useState([]);
   const [updatedSuccessfully, setUpdatedSuccessfully] = useState(false);
   const [waiting, setWaiting] = useState(false);
+  const [detailsVisible, setDetailsVisible] = useState(false);
+  const [detailedItem, setDetailedItem] = useState({});
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -103,8 +105,13 @@ function App() {
     setBackendLink
   }
 
+  const showDetails = (item) => {
+    setDetailsVisible(true);
+    setDetailedItem(item);
+  }
+
   return (
-    <div className='h-screen w-screen'>
+    <div className='h-screen w-screen bg-light'>
       <h1 className='text-5xl text-center pt-10'>Project Management Website</h1>
 
       <div className="flex px-5 gap-5">
@@ -113,13 +120,14 @@ function App() {
         />
 
         <List
+          onClick={showDetails}
           data={data}
           setUpdatedSuccessfully={setUpdatedSuccessfully}
           updatedSuccessfully={updatedSuccessfully}
         />
       </div>
 
-      <Details />
+      {detailsVisible && <Details item={detailedItem} setDetailsVisible={setDetailsVisible} name='hello' />}
     </div>
   );
 }
