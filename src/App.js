@@ -53,7 +53,7 @@ function App() {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:5000/projects').then(res => {
+    axios.get(projectsUrl).then(res => {
       setData(res.data)
     })
   }, [updatedSuccessfully])
@@ -112,10 +112,10 @@ function App() {
   }
 
   return (
-    <div className='h-screen w-screen bg-light'>
-      <h1 className='text-5xl text-center font-medium pt-10 mb-5'>Project Management Website</h1>
+    <div className='h-full lg:h-screen w-screen bg-light'>
+      <h1 className='w-3/4 mx-auto lg:w-full text-3xl lg:text-5xl text-center font-medium pt-10 mb-5'>Project Management Website</h1>
 
-      <div className="flex px-5 gap-5">
+      <div className="flex flex-col-reverse lg:flex-row px-5 gap-5">
         <Form
           data={detailedData}
         />
@@ -128,7 +128,7 @@ function App() {
         />
       </div>
 
-      {detailsVisible && <Details item={detailedItem} setDetailsVisible={setDetailsVisible} name='hello' />}
+      {detailsVisible && <Details updatedSuccessFully={updatedSuccessfully} setUpdatedSuccessfully={setUpdatedSuccessfully} selectedItem={detailedItem} setDetailsVisible={setDetailsVisible} name='hello' />}
     </div>
   );
 }
