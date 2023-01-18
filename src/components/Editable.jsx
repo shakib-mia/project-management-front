@@ -23,23 +23,23 @@ const Editable = ({ value, className, label, id, setSuccessMessage, updatedSucce
 
     const update = (label) => {
         setEdit(false);
-        axios.put(projectsUrl+id, {
+        axios.put(projectsUrl + id, {
             field: label,
             updatedDoc: text
         }).then(res => {
-            if(res.modifiedCount) {
-                console.log(res);
-                setSuccessMessage(res.data.message);
-                setUpdatedSuccessfully(!updatedSuccessFully)
-            }
+            setSuccessMessage(res.data.message);
+            setUpdatedSuccessfully(true);
         })
     }
 
     return (
         label !== "_id" && <div className='w-full'>
             <h1 className='block text-lg font-medium capitalize mb-2'>{label === "title" ? label : newLabel}:</h1>
-            <div className="flex items-center justify-between">
-                {edit ? <form className='w-full' onSubmit={() => update(label)}>
+            <div className="flex items-center gap-0">
+                {edit ? <form className='w-full' onSubmit={(e) => {
+                    e.preventDefault();
+                    update(label);
+                }}>
                     {label === "details"
                         ? <TextArea className="w-full" value={text} rows={5} cols={50} />
                         : <input className={`border w-full ${className}`} onChange={e => setText(e.target.value)} value={text} />}
@@ -56,7 +56,7 @@ const Editable = ({ value, className, label, id, setSuccessMessage, updatedSucce
                 <span className='cursor-pointer ml-3'>
                     {!edit
                         ? <i onClick={() => setEdit(true)} className="fa fa-pen"></i>
-                        : <i className="fa fa-check"></i>}
+                        : <i onClick={() => update(label)} className="fa fa-check"></i>}
                 </span>
             </div>
         </div>

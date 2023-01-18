@@ -56,8 +56,8 @@ function App() {
     axios.get(projectsUrl).then(res => {
       setData(res.data)
     })
+    console.log(updatedSuccessfully);
   }, [updatedSuccessfully])
-
 
   const handlePrimaryUpload = e => {
     const imgForm = new FormData()
