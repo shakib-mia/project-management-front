@@ -4,6 +4,7 @@ import axios from "axios"
 import Form from './components/Form';
 import List from './components/List';
 import Details from './components/Details';
+import { projectsUrl } from './components/links/links';
 
 function App() {
   const [showBackendInput, setShowBackendInput] = useState(false);
@@ -27,7 +28,7 @@ function App() {
 
     // console.log(description.split(/\r?\n|\r|\n/g));
     setWaiting(true)
-    axios.post("http://localhost:5000/projects", {
+    axios.post(projectsUrl, {
       title,
       smallDesc,
       liveSite: liveSite.includes("https://") ? liveSite : "https://" + liveSite,
@@ -112,7 +113,7 @@ function App() {
 
   return (
     <div className='h-screen w-screen bg-light'>
-      <h1 className='text-5xl text-center pt-10'>Project Management Website</h1>
+      <h1 className='text-5xl text-center font-medium pt-10 mb-5'>Project Management Website</h1>
 
       <div className="flex px-5 gap-5">
         <Form
