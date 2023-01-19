@@ -14,7 +14,7 @@ const List = ({ data, setUpdatedSuccessfully, updatedSuccessfully, onClick }) =>
 
     return (
         <div className='w-full lg:w-1/3'>
-            <h1 className='text-2xl'>Present Sites</h1>
+            <h1 className='text-2xl mt-4 text-center mb-3 font-medium'>Present Sites</h1>
             <ul className='flex flex-col justify-center items-center'>
                 {data.length ? data.map(item => <ListItems onClick={() => onClick(item)} key={item._id} item={item} deleteItem={deleteItem} />) : <img className='animate-spin duration-500 w-20' src={spinner} alt="" />}
             </ul>
