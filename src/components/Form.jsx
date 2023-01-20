@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InputField from './InputField';
 import TextArea from './TextArea';
 import box from "./../Assets/box.png";
@@ -6,7 +6,7 @@ import checkmark from "./../Assets/checkmark.png";
 
 const Form = ({ data }) => {
   const { handleFormSubmit, title, setTitle, smallDesc, setSmallDesc, liveSite, setLiveSite, frontCode, setFrontCode, description, setDescription, primaryImage, handlePrimaryUpload, secondaryImage, handleSecondaryUpload, tertiaryImage, handleTertiaryUpload, showBackendInput, setShowBackendInput, backendLink, setBackendLink } = data;
-  const [checkmarkVisible, setCheckmarkVisible] = useState(false);
+
   return (
     <form onSubmit={handleFormSubmit} className='w-full lg:w-2/3 mx-auto mb-5 lg:mb-0 rounded-xl mt-5 bg-darkGray p-5'>
       <div className='grid grid-cols-2 gap-4'>

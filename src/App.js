@@ -5,6 +5,7 @@ import Form from './components/Form';
 import List from './components/List';
 import Details from './components/Details';
 import { projectsUrl } from './components/links/links';
+import { getProjects } from './components/apiCalls.js';
 
 function App() {
   const [showBackendInput, setShowBackendInput] = useState(false);
@@ -17,11 +18,16 @@ function App() {
   const [liveSite, setLiveSite] = useState("");
   const [frontCode, setFrontCode] = useState("");
   const [backendLink, setBackendLink] = useState("");
-  const [data, setData] = useState([]);
   const [updatedSuccessfully, setUpdatedSuccessfully] = useState(false);
   const [waiting, setWaiting] = useState(false);
   const [detailsVisible, setDetailsVisible] = useState(false);
   const [detailedItem, setDetailedItem] = useState({});
+
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    getProjects(projectsUrl, setProjects)
+  }, [updatedSuccessfully])
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -51,13 +57,6 @@ function App() {
       setDescription("");
     })
   }
-
-  useEffect(() => {
-    axios.get(projectsUrl).then(res => {
-      setData(res.data)
-    })
-    console.log(updatedSuccessfully);
-  }, [updatedSuccessfully])
 
   const handlePrimaryUpload = e => {
     const imgForm = new FormData()
@@ -112,7 +111,7 @@ function App() {
   }
 
   return (
-    <div className='h-full lg:h-screen w-screen bg-light'>
+    <div className={`lg:h-screen w-screen bg-light ${detailsVisible && "h-screen overflow-hidden"}`}>
       <h1 className='w-3/4 mx-auto lg:w-full text-3xl lg:text-5xl text-center font-medium pt-10 mb-5'>Project Management Website</h1>
 
       <div className="flex flex-col-reverse lg:flex-row px-5 gap-5">
@@ -122,7 +121,7 @@ function App() {
 
         <List
           onClick={showDetails}
-          data={data}
+          data={projects}
           setUpdatedSuccessfully={setUpdatedSuccessfully}
           updatedSuccessfully={updatedSuccessfully}
         />

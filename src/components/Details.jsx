@@ -10,8 +10,8 @@ const Details = ({ name, selectedItem, setDetailsVisible, updatedSuccessFully, s
     return (
         <div className='backdrop-blur-sm w-screen h-screen absolute top-0'>
             {!successMessage && <div className="h-full flex justify-center items-center">
-                <div className="bg-white w-11/12 h-2/3 lg:w-1/2 lg:h-2/3 rounded shadow-md p-6 relative animate-[fadeIn_100ms_ease-out] overflow-auto " id='modal'>
-                    <span className='absolute right-2 top-0 cursor-pointer' onClick={() => setDetailsVisible(false)}>&times;</span>
+                <div className="bg-white w-11/12 h-2/3 lg:w-1/2 lg:h-2/3 rounded shadow-md p-6 relative animate-[fadeIn_100ms_ease-out] overflow-auto my-4" id='modal'>
+                    <span className='absolute right-4 top-2 cursor-pointer text-3xl' onClick={() => setDetailsVisible(false)}>&times;</span>
                     <h1 className='text-center text-3xl font-medium'>{selectedItem.title}</h1>
                     <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-5">
                         {newObject.map(item => item !== 'backendCode' && <Editable updatedSuccessFully={updatedSuccessFully} setUpdatedSuccessfully={setUpdatedSuccessfully} key={newObject.indexOf[item]} className="px-3 py-2 inline-block" label={item} value={selectedItem[item]} id={selectedItem._id} setSuccessMessage={setSuccessMessage} />)}
