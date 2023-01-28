@@ -39,13 +39,12 @@ function App() {
       smallDesc,
       liveSite: liveSite.includes("https://") ? liveSite : "https://" + liveSite,
       frontCode: frontCode.includes("https://") ? frontCode : "https://" + frontCode,
-      backendLink,
+      backendLink: backendLink.includes("https://") ? backendLink : "https://" + backendLink,
       hasBackendLink: showBackendInput,
       primaryImage,
       details: description,
       secondaryImage,
-      tertiaryImage,
-      email: "smdshakibmia2001@gmail.com"
+      tertiaryImage
     }).then(res => {
       setUpdatedSuccessfully(res.data.status === 200)
       setWaiting(res.data.status !== 200)
