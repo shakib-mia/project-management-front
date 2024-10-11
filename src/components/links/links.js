@@ -1,2 +1,2 @@
-export const projectsUrl = "http://localhost:5000/projects/"
+export const projectsUrl = "https://project-management-server-rho.vercel.app/projects/"
 
